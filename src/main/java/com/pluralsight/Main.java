@@ -1,5 +1,7 @@
 package com.pluralsight;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Main {
@@ -39,9 +41,27 @@ public class Main {
 
         }
         private static void addDeposit(Scanner scanner){
-
+            LocalDateTime today = LocalDateTime.now();
+            DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd|HH:mm:ss");
+            String formatedDate = today.format(fmt);
+            System.out.println("Description: ");
+            String description = scanner.nextLine();
+            System.out.println("Vendor: ");
+            String vendor = scanner.nextLine();
+            System.out.println("Price: ");
+            double price = scanner.nextDouble();
+            System.out.println("Is this information correct: \n" + formatedDate + "|" + description + "|" + vendor + "|$" + price);
         }
         private static void addPayment(Scanner scanner){
-
+            LocalDateTime today = LocalDateTime.now();
+            DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd|HH:mm:ss");
+            String formatedDate = today.format(fmt);
+            System.out.println("Description: ");
+            String description = scanner.nextLine();
+            System.out.println("Vendor: ");
+            String vendor = scanner.nextLine();
+            System.out.println("Price: ");
+            double price = scanner.nextDouble();
+            System.out.println("Is this information correct: \n" + formatedDate + "|" + description + "|" + vendor + "|$" + price);
         }
     }
