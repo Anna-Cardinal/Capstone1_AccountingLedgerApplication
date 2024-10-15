@@ -1,15 +1,18 @@
 package com.pluralsight;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Main {
-
+        static final Transactions[] transactions = new Transactions[20];
+        private static int transactionCount = 0;
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int command;
-
+//
         do {
             System.out.println("Would you like to ");
             System.out.println("1) Add Deposit");
@@ -28,7 +31,7 @@ public class Main {
                     addPayment(scanner);
                     break;
                 case 3:
-
+                    new Ledger(scanner);
                     break;
                 case 4:
                     System.out.println("Goodbye, Have a nice day!");
@@ -49,9 +52,11 @@ public class Main {
             String description = scanner.nextLine();
             System.out.println("Vendor: ");
             String vendor = scanner.nextLine();
-            System.out.println("Price: ");
-            double price = scanner.nextDouble();
-            System.out.println("Is this information correct: \n" + formatedDate + "|" + description + "|" + vendor + "|$" + price);
+            System.out.println("Amount: ");
+            double amount = scanner.nextDouble();
+            System.out.println("Is this information correct: \n" + formatedDate + "|" + description + "|" + vendor + "|$" + amount);
+            transactions[transactionCount++] = new Transactions(formatedDate, description, vendor, amount);
+            System.out.println("Deposit added successfully.");
         }
         private static void addPayment(Scanner scanner){
             LocalDateTime today = LocalDateTime.now();
@@ -69,8 +74,12 @@ public class Main {
             scanner.nextLine();
             System.out.println("Payment by: ");
             String vendor = scanner.nextLine();
-            System.out.println("Price: ");
-            double price = scanner.nextDouble();
-            System.out.println("Is this information correct: \n" + formatedDate + "|" + description + "|" + vendor + "|$" + price);
+            System.out.println("Amount: ");
+            double amount = scanner.nextDouble();
+            System.out.println("Is this information correct: \n" + formatedDate + "|" + description + "|" + vendor + "|$" + amount);
+            transactions[transactionCount++] = new Transactions(formatedDate, description, vendor, amount);
+            System.out.println("Payment added successfully.");
         }
-    }
+//
+
+}

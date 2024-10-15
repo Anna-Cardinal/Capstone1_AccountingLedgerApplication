@@ -1,84 +1,80 @@
 package com.pluralsight;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import static com.pluralsight.Main.transactions;
 
-public class Ledger {
-    LocalDateTime today = LocalDateTime.now();
-    DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd|HH:mm:ss");
-    String formatedDate = today.format(fmt);
-    String description;
-    String vendor;
-    double amount;
-    int securityPin;
-    long cardNumber;
-    String expoDate;
+public class Ledger{
+    private static int trensationsCount;
+    Scanner scanner = new Scanner(System.in);
+    public Ledger(Scanner scanner) {
+        int command;
+        String filePath = "src/transactions.csv";
+        do {
+            System.out.println("Would you like to see: ");
+            System.out.println("1) All");
+            System.out.println("2) Deposits");
+            System.out.println("3) Payments");
+            System.out.println("4) Reports");
+            System.out.println("0) Home");
+            System.out.println("Please enter your command:");
+            command = scanner.nextInt();
+            scanner.nextLine();
+            switch (command) {
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 0:
+                    return;
+                default:
+                    System.out.println("Invalid command. Please choose 1-5.");
+            }
+        } while (command != 5);
 
-public Ledger(String formatedDate, String description, String vendor, double amount) {
-    this.formatedDate = formatedDate;
-    this.description = description;
-    this.vendor = vendor;
-    this.amount = amount;
-}
-public String getformatedDate(){
-    return formatedDate;
     }
-public void setFormatedDate(String formatedDate){
-    this.formatedDate = formatedDate;
-    }
-public String getDescription(){
-    return description;
-}
-public void setDescription(String description){
-    this.description = description;
-}
-public String getVendor(){
-    return vendor;
-}
-public void setVendor(String vendor){
-    this.vendor = vendor;
-}
-public double getAmount() {
-        return amount;
-}
-public void setAmount(double amount) {
-        this.amount = amount;
-}
-private paymentMethed(long cardNumber, String expoDate, int securityPin){
-    this.cardNumber = cardNumber;
-    this.expoDate = expoDate;
-    this.securityPin = securityPin;
-}
+    private static void allTransactions() {
+            if (transactions == 0) {
+                System.out.println("No vehicles available.");
+                return;
+            }
+            for (int i = 0; i < trensationsCount; i++) {
+                System.out.println(transatons[i]);
+            }
+        }
+try (BufferedReader br = new BufferedReader(new FileReader(filePath))){
+        String line;
 
-    public long getCardNumber() {
-        return cardNumber;
+        if ((line = br.readLine()) != null) {
+            // Optionally print the header
+
+        }
+        while ((line = br.readLine()) != null){
+            String[] data = line.split("\\|");
+
+            dateTime = Integer.parseInt(data[0]);
+            dicription = data[1];
+            vendor = Double.parseDouble(data[2]);
+            amount = Double.parseDouble(data[3]);
+
+            Transactions employee = new Transactions(dateTime, d, hoursWorked, payRate);
+//                employees.add(employee);
+
+            System.out.printf("Employee ID: %d  Name: %s  Gross Pay: $%.2f%n",
+                    employee.getEmployeeID(),
+                    employee.getName(),
+                    employee.getGrossPay());
+        }
+    }catch (
+    IOException e){
+        System.out.println("Error reading the file: " + e.getMessage());
     }
 
-    public void setCardNumber(long cardNumber) {
-        this.cardNumber = cardNumber;
-    }
-    public String getExpoDate(){
-        return expoDate;
-    }
-
-    public void setExpoDate(String expoDate) {
-        this.expoDate = expoDate;
-    }
-
-    public int getSecurityPin() {
-        return securityPin;
-    }
-
-    public void setSecurityPin(int securityPin) {
-        this.securityPin = securityPin;
-    }
+//    }for (int i = 0; i < invintory.size(); i++) {
+//        Product p = inventory.get(i);
+//        System.out.printf("id: %d %s - Price: $%.2f",
+//                p.getId(), p.getName(), p.getPrice());
+//    }    }    public ArrayList<Product>
 }
-//@Override
-//    public String toString() {
-//        return "Ledger{" +
-//                "formatedDate=" + formatedDate +
-//                ", description='" + description + '\'' +
-//                ", vendor='" + vendor + '\'' +
-//                ", amount=" + amount +
-//                '}';
-//}
