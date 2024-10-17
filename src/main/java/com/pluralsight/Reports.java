@@ -1,19 +1,45 @@
 package com.pluralsight;
+
+import java.util.Scanner;
+
 //import java.util.Comparator;
 public class Reports {
-//    public static void sortTransactionsByDate(List<String> transactions) {
-//        transactions.sort((line1, line2) -> { LocalDate date1 = parseDate(line1);
-//            LocalDate date2 = parseDate(line2);
-//            return date1.compareTo(date2);
-//            // Sorts in ascending order (earliest date first) }); }
+    int command;
+    Scanner scanner = new Scanner(System.in);
+    public Reports(Scanner scanner) {
+    do {
+        System.out.println("Reports view: ");
+        System.out.println("1) Month-Date");
+        System.out.println("2) Previous Month");
+        System.out.println("3) Year-Date");
+        System.out.println("4) Previous Year");
+        System.out.println("5) Search by Vendor");
+        System.out.println("0) Back");
+        System.out.println("Please enter your command:");
+        command = scanner.nextInt();
+        scanner.nextLine();
+        switch (command) {
+            case 1:
 
-//            public class DateComparator implements Comparator<FinancialTransactionsCLI> {
-//                @Override public int compare(FinancialTransactionsCLI t1, FinancialTransactionsCLI t2) {
-//                    return t1.getDate().compareTo(t2.getDate());
-//                }
-//                }
-//                // Ascending order } }
+                break;
+            case 2:
 
-//            }
-//
-           }
+                break;
+            case 3:
+
+                break;
+            case 4:
+
+                break;
+            case 5:
+
+                break;
+            case 0:
+                return;
+            default:
+                System.out.println("Invalid command. Please choose 1-5.");
+        }
+    } while (command != 5);
+
+    }
+}
