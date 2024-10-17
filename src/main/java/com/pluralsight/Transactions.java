@@ -73,12 +73,5 @@ private void paymentMethed(long cardNumber, String expoDate, int securityPin){
         this.securityPin = securityPin;
     }
 }
-//@Override
-//    public String toString() {
-//        return "Ledger{" +
-//                "formatedDate=" + formatedDate +
-//                ", description='" + description + '\'' +
-//                ", vendor='" + vendor + '\'' +
-//                ", amount=" + amount +
-//                '}';
-//}
+
+
