@@ -6,6 +6,19 @@ import java.util.Scanner;
 public class Reports {
     int command;
     Scanner scanner = new Scanner(System.in);
+Transactions transactions = new Transactions();
+
+
+
+
+
+
+
+
+
+
+
+
     public Reports(Scanner scanner) {
     do {
         System.out.println("Reports view: ");
@@ -42,4 +55,12 @@ public class Reports {
     } while (command != 5);
 
     }
+//Transactions((c1, c2) -> c1.getDate().getMonthValue() - c2.getDate().getMonthValue());
+//    //Display sorted results
+//    for (Transactions c : dataHolder) {
+//        System.out.println(c);
+//        //Modify this to match how you'd like to display Contractor objects }
+// //Sorting the list by the month of the date
+
 }
+

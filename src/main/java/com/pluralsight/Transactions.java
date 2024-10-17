@@ -1,10 +1,14 @@
 package com.pluralsight;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class Transactions {
-    LocalDateTime today = LocalDateTime.now();
+    LocalDate today;
+    LocalTime now;
+    LocalDateTime dateTime;
     DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd|HH:mm:ss");
     String formatedDate = today.format(fmt);
     String description;
@@ -19,6 +23,12 @@ public Transactions(String formatedDate, String description, String vendor, doub
     this.description = description;
     this.vendor = vendor;
     this.amount = amount;
+}
+    public Transactions(LocalDate today, LocalTime now, String description, String vendor, double amount) {
+        this.dateTime = LocalDateTime.of(today, now);
+        this.description = description;
+        this.vendor = vendor;
+        this.amount = amount;
 }
 public String getformatedDate(){
     return formatedDate;
@@ -72,6 +82,9 @@ private void paymentMethed(long cardNumber, String expoDate, int securityPin){
     public void setSecurityPin(int securityPin) {
         this.securityPin = securityPin;
     }
-}
+    @Override
+    public String toString() {
+        return formatedDate + "|" + description + "|" + vendor + "|" +amount;
+}}
 
 
